@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/RestaurantChainApp/.vs/RestaurantChainApp
+/RestaurantChainApp/RestaurantChainApp/bin/Debug/net6.0
+/RestaurantChainApp/RestaurantChainApp/obj
+/RestaurantChainApp/.vs/ProjectEvaluation
+/RestaurantChainApp/RestaurantChainApp/bin/Debug/netcoreapp3.1
+/RestaurantChainApp/RestaurantChainApp.Unit.Tests/bin/Debug/netcoreapp3.1
+/RestaurantChainApp/RestaurantChainApp.Unit.Tests/obj
+/RestaurantChainApp/RestaurantChainApp.Integration.Tests/bin/Debug/netcoreapp3.1
+/RestaurantChainApp/RestaurantChainApp.Integration.Tests/obj

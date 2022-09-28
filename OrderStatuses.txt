@@ -1,0 +1,4 @@
+InProgress = 1
+Confirmed = 2
+Paid = 3
+Cancelled = 4
