@@ -5,23 +5,23 @@ using RestaurantChainApp.Factories;
 using RestaurantChainApp.Models.Order;
 using RestaurantChainApp.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RestaurantChainApp.Validators
 {
     public class OrderUpdateValidator : AbstractValidator<UpdateOrderModel>
     {
         private readonly IDatabaseConnectionFactory databaseConnectionFactory;
-        private readonly IRepositoryFactory repositoryFactory;
 
         private readonly OrdersRepository ordersRepository;
 
-        public OrderUpdateValidator(IDatabaseConnectionFactory databaseConnectionFactory)
+        public OrderUpdateValidator(IDatabaseConnectionFactory databaseConnectionFactory, IRepositoryFactory repositoryFactory)
         {
             this.databaseConnectionFactory = databaseConnectionFactory;
 
             ordersRepository = repositoryFactory.CreateOrdersRepository();
 
-            RuleFor(o => o.Id)
+            RuleFor(o => o.orderItems.First().OrderId)
              .NotEmpty()
              .Must(ValidateOrderId)
              .WithMessage("Order specified doesn't exist in the database");

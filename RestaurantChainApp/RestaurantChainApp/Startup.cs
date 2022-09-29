@@ -71,6 +71,7 @@ namespace RestaurantChainApp
 
             app.UseHttpsRedirection();
             Sql.Load();
+            //Sql.Load(debugMode: true);
         }
     }
 }

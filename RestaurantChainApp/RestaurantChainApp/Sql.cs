@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using RestaurantChainApp.Factories;
 
 namespace RestaurantChainApp
 {
@@ -8,15 +9,20 @@ namespace RestaurantChainApp
     {
         public static Dictionary<string, string> Queries = new Dictionary<string, string>();
 
-        public static void Load() 
+        public static void Load(bool debugMode = false) 
         {
-            List<Query> queries = new List<Query>();
+           
 
-            using (StreamReader streamReader = new StreamReader("..\\..\\Sql\\queries.json"))
+            List<Query> queries = new List<Query>();
+            string queriesFilePath = debugMode ? "..\\..\\Sql\\queries.json" :
+                                                 "..\\..\\..\\..\\..\\Sql\\queries.json";
+            using (StreamReader streamReader = new StreamReader(queriesFilePath))
             {
                 string json = streamReader.ReadToEnd();
                 queries = JsonConvert.DeserializeObject<List<Query>>(json);
             }
+
+
 
             queries.ForEach(query => Queries.Add(query.Name, query.Value));
         }

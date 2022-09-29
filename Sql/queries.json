@@ -24,12 +24,12 @@
 		"value": "INSERT INTO restaurantchain.orderitems(orderid, menuitemid, amount, value)VALUES (@orderid, @menuitemid, @amount, @value) RETURNING id;"
 	},
 	{
-		"name": "UpdateOrder",
-		"value": "UPDATE restaurantchain.orders SET  total=@total, status=@status	WHERE id = @id;"
+		"name": "DeleteOrder",
+		"value": "DELETE FROM restaurantchain.orders WHERE id = @orderid;"
 	},
 	{
-		"name": "UpdateOrderItem",
-		"value": "UPDATE restaurantchain.orderitems SET orderid=@orderid, menuitemid=@menuitemid, amount=@amount, value=@value WHERE id = @id;"
+		"name": "DeleteOrderItemsForOrderId",
+		"value": "DELETE FROM restaurantchain.orderitems WHERE orderid = @orderid;"
 	},
 	{
 		"name": "SelectOrder",

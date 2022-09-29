@@ -5,10 +5,12 @@ namespace RestaurantChainApp.Factories
     public class ValidatorFactory : IValidatorFactory
     {
         private readonly IDatabaseConnectionFactory databaseConnectionFactory;
+        private readonly IRepositoryFactory repositoryFactory;
 
-        public ValidatorFactory(IDatabaseConnectionFactory databaseConnectionFactory)
+        public ValidatorFactory(IDatabaseConnectionFactory databaseConnectionFactory, IRepositoryFactory repositoryFactory)
         {
             this.databaseConnectionFactory = databaseConnectionFactory;
+            this.repositoryFactory = repositoryFactory;
         }
 
         public OrderCreateValidator OrderCreateValidator() 
@@ -17,7 +19,7 @@ namespace RestaurantChainApp.Factories
         }
         public OrderUpdateValidator OrderUpdateValidator() 
         {
-            return new OrderUpdateValidator(databaseConnectionFactory);
+            return new OrderUpdateValidator(databaseConnectionFactory, repositoryFactory);
         }
     }
 }

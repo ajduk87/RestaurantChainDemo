@@ -27,16 +27,9 @@ namespace RestaurantChainApp.Repositories
             });
         }
 
-        public void Update(IDbConnection connection, OrderItem orderItem, IDbTransaction transaction = null)
+        public void DeleteByOrderId(IDbConnection connection, int orderid, IDbTransaction transaction = null)
         {
-            connection.ExecuteScalar<long>(Sql.Queries["UpdateOrderItem"], new
-            {
-                id = orderItem.Id,
-                orderid = orderItem.OrderId,
-                menuitemid = orderItem.MenuItemId,
-                amount = orderItem.Amount,
-                value = orderItem.Value
-            });
+            connection.Execute(Sql.Queries["DeleteOrderItemsForOrderId"], new { orderid });
         }
     }
 }

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\RestaurantChainApp\RestaurantChainApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+
 </Project>

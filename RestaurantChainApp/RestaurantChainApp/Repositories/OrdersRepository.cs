@@ -20,23 +20,18 @@ namespace RestaurantChainApp.Repositories
         }
 
 
-        public long Insert(IDbConnection connection, Order order, IDbTransaction transaction = null) 
+        public int Insert(IDbConnection connection, Order order, IDbTransaction transaction = null) 
         {
-                return connection.ExecuteScalar<long>(Sql.Queries["InsertOrder"], new
+                return connection.ExecuteScalar<int>(Sql.Queries["InsertOrder"], new
                 {
                     total = order.Total,
                     status = order.Status
                 });
         }
 
-        public void Update(IDbConnection connection, Order order, IDbTransaction transaction = null)
+        public void DeleteOrder(IDbConnection connection, int orderid, IDbTransaction transaction = null)
         {
-            connection.ExecuteScalar(Sql.Queries["UpdateOrder"], new
-            {
-                id = order.Id,
-                total = order.Total,
-                status = order.Status
-            });
+            connection.Execute(Sql.Queries["DeleteOrder"], new { orderid });
         }
     }
 }

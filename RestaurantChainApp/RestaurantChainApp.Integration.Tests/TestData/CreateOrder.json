@@ -1,0 +1,27 @@
+{
+	"orderItems": [
+		{
+			"menuitemId": 5,
+			"name": "Grilled turkey fillet",
+			"amount": 2,
+			"value": 1.06,
+			"orderid": 0
+		},
+		{
+			"menuitemId": 8,
+			"name": "Cabbage salad",
+			"amount": 1,
+			"value": 0.32,
+			"orderid": 0
+		},
+		{
+			"menuitemId": 9,
+			"name": "White bread",
+			"amount": 1,
+			"value": 0.18,
+			"orderid": 0
+		}
+	],
+	"total": 2.62,
+	"status": 1
+}

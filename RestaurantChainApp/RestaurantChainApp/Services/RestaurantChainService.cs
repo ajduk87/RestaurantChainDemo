@@ -233,7 +233,7 @@ namespace RestaurantChainApp.Services
                         Order order = this.mapper.Map<Order>(orderDto);
                         List<OrderItem> orderItems = this.mapper.Map<List<OrderItem>>(orderDto.orderItems);
 
-                        long orderid = ordersRepository.Insert(connection, order, transaction);
+                        int orderid = ordersRepository.Insert(connection, order, transaction);
 
                         foreach (var orderItem in orderItems)
                         {
@@ -261,14 +261,21 @@ namespace RestaurantChainApp.Services
                 {
                     try
                     {
+                        int orderid = orderDto.orderItems.First().OrderId;
+
+                        orderItemsRepository.DeleteByOrderId(connection, orderid, transaction);
+                        ordersRepository.DeleteOrder(connection, orderid, transaction);
+                        
+
                         Order order = this.mapper.Map<Order>(orderDto);
                         List<OrderItem> orderItems = this.mapper.Map<List<OrderItem>>(orderDto.orderItems);
 
-                        ordersRepository.Update(connection, order, transaction);
+                        int neworderid = ordersRepository.Insert(connection, order, transaction);
 
                         foreach (var orderItem in orderItems)
                         {
-                            orderItemsRepository.Update(connection, orderItem, transaction);
+                            orderItem.OrderId = neworderid;
+                            orderItemsRepository.Insert(connection, orderItem, transaction);
                         }
 
                         transaction.Commit();
