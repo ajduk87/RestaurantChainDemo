@@ -1,14 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using RestaurantChainApp.BusinessLogic;
-using RestaurantChainApp.Factories;
-using RestaurantChainApp.Services;
+using Microsoft.Extensions.Logging;
+using RestaurantChainAppQueries.Factories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace RestaurantChainApp
+namespace RestaurantChainAppQueries
 {
     public class Startup
     {
@@ -31,17 +35,10 @@ namespace RestaurantChainApp
             }));
 
 
-
             services.AddTransient<IEnvironmentSettingsFactory, EnvironmentSettingsFactory>();
-            services.AddTransient<IRepositoryFactory, RepositoryFactory>();
-            services.AddTransient<IValidatorFactory, ValidatorFactory>();
             services.AddTransient<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
-            services.AddTransient<IRestaurantChainService, RestaurantChainService>();
-            services.AddTransient<IPriceCalculator, PriceCalculator>();
-            services.AddTransient<IHappyHourCalculator, HappyHourCalculator>();
+            services.AddTransient<IRepositoryFactory, RepositoryFactory>();
 
-
-            services.AddLocalization();
             //Configure Swagger
             services.AddSwaggerGen();
         }
@@ -70,7 +67,7 @@ namespace RestaurantChainApp
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
-            //Sql.Load();
+
             Sql.Load(debugMode: true);
         }
     }

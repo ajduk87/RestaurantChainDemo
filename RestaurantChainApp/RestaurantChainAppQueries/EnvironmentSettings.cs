@@ -1,4 +1,4 @@
-﻿namespace RestaurantChainApp
+﻿namespace RestaurantChainAppQueries
 {
     public class EnvironmentSettings
     {

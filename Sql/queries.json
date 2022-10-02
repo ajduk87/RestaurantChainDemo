@@ -42,5 +42,21 @@
 	{
 		"name": "ExistsOrder",
 		"value": "SELECT EXISTS (SELECT 1 FROM restaurantchain.orders WHERE id = @id);"
+	},
+	{
+		"name": "SelectDishes",
+		"value": "SELECT * FROM restaurantchain.dishes;"
+	},
+	{
+		"name": "SelectSingleDishes",
+		"value": "SELECT * FROM restaurantchain.singledishes;"
+	},
+	{
+		"name": "SelectMeals",
+		"value": "SELECT * FROM restaurantchain.meals;"
+	},
+	{
+		"name": "SelectDishesByMealId",
+		"value": "SELECT dishes.id, dishes.name, dishes.description, dishes.price, dishes.ismeal FROM restaurantchain.mealsdishes inner join restaurantchain.dishes ON dishes.id = mealsdishes.dishid where mealid = @mealid;"
 	}
 ]

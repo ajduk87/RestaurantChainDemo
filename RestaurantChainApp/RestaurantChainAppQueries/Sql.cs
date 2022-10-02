@@ -2,15 +2,16 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace RestaurantChainApp
+
+namespace RestaurantChainAppQueries
 {
     public static class Sql
     {
         public static Dictionary<string, string> Queries = new Dictionary<string, string>();
 
-        public static void Load(bool debugMode = false) 
+        public static void Load(bool debugMode = false)
         {
-           
+
 
             List<Query> queries = new List<Query>();
             string queriesFilePath = debugMode ? "..\\..\\Sql\\queries.json" :

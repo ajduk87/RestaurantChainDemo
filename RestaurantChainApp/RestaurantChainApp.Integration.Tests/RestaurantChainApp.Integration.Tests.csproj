@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RestaurantChainAppQueries\RestaurantChainAppQueries.csproj" />
     <ProjectReference Include="..\RestaurantChainApp\RestaurantChainApp.csproj" />
   </ItemGroup>
 

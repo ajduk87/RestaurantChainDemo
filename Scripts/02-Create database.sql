@@ -73,3 +73,25 @@ ALTER TABLE restaurantchain.OrderItems ADD CONSTRAINT FK_OrderItems_MenuItems
 	FOREIGN KEY (MenuItemid) REFERENCES restaurantchain.MenuItems (Id) ON DELETE No Action ON UPDATE No Action;
 ALTER TABLE restaurantchain.OrderItems ADD CONSTRAINT FK_OrderItems_Orders
 	FOREIGN KEY (Orderid) REFERENCES restaurantchain.Orders (Id) ON DELETE No Action ON UPDATE No Action;
+	
+	
+DROP VIEW IF EXISTS restaurantchain.Dishes CASCADE;
+	
+CREATE VIEW restaurantchain.Dishes AS
+SELECT *
+FROM restaurantchain.menuitems;
+
+DROP VIEW IF EXISTS restaurantchain.SingleDishes CASCADE;
+	
+CREATE VIEW restaurantchain.SingleDishes AS
+SELECT *
+FROM restaurantchain.menuitems
+WHERE ismeal = FALSE;
+
+DROP VIEW IF EXISTS restaurantchain.Meals CASCADE;
+	
+CREATE VIEW restaurantchain.Meals AS
+SELECT *
+FROM restaurantchain.menuitems
+WHERE ismeal = TRUE;
+

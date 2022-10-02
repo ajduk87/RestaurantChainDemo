@@ -50,33 +50,33 @@ namespace RestaurantChainApp.Controllers
             return mapperConfiguration.CreateMapper();
         }
 
-        [Route("GetMenu")]
-        [HttpGet]        
-        public List<Dish> GetMenuItems()
-        {
-            return this.restaurantChainService.GetMenu();
-        }
+        //[Route("GetMenu")]
+        //[HttpGet]        
+        //public List<Dish> GetMenuItems()
+        //{
+        //    return this.restaurantChainService.GetMenu();
+        //}
 
-        [Route("GetSingleDishes")]
-        [HttpGet]
-        public List<Dish> GetSingleDishes()
-        {
-            return this.restaurantChainService.GetSingleDishes();
-        }
+        //[Route("GetSingleDishes")]
+        //[HttpGet]
+        //public List<Dish> GetSingleDishes()
+        //{
+        //    return this.restaurantChainService.GetSingleDishes();
+        //}
 
-        [Route("GetMeals")]
-        [HttpGet]
-        public List<Meal> GetMeals()
-        {
-            return this.restaurantChainService.GetMeals();
-        }
+        //[Route("GetMeals")]
+        //[HttpGet]
+        //public List<Meal> GetMeals()
+        //{
+        //    return this.restaurantChainService.GetMeals();
+        //}
 
-        [Route("HappyHour")]
-        [HttpGet]
-        public HappyHour HappyHour()
-        {
-            return this.restaurantChainService.HappyHour();
-        }
+        //[Route("HappyHour")]
+        //[HttpGet]
+        //public HappyHour HappyHour()
+        //{
+        //    return this.restaurantChainService.HappyHour();
+        //}
 
         [Route("GetOrder")]
         [HttpGet]
