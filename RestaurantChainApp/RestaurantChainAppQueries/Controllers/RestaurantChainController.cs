@@ -20,6 +20,7 @@ namespace RestaurantChainAppQueries.Controllers
 
         private readonly IDatabaseConnectionFactory databaseConnectionFactory;
         private readonly DishesRepository dishesRepository;
+        private readonly OrderDtoRepository orderDtoRepository;
         private readonly EnvironmentSettings environmentSettings;
 
         public RestaurantChainController(IRepositoryFactory repositoryFactory,
@@ -30,6 +31,7 @@ namespace RestaurantChainAppQueries.Controllers
             this.databaseConnectionFactory = databaseConnectionFactory;
 
             dishesRepository = repositoryFactory.CreateDishesRepository();
+            orderDtoRepository = repositoryFactory.CreateOrderDtoRepository();
 
             environmentSettings = environmentSettingsFactory.GetEnvironmentSettings();
 
@@ -115,6 +117,32 @@ namespace RestaurantChainAppQueries.Controllers
                 HappyHourBegin = environmentSettings.HappyHourBegin,
                 HappyHourEnd = environmentSettings.HappyHourEnd
             };
+        }
+
+        [Route("GetOrder")]
+        [HttpGet]
+        public OrderDto GetOrder(int orderid)
+        {
+            using (NpgsqlConnection connection = this.databaseConnectionFactory.Create())
+            {
+                connection.Open();
+
+                try
+                {
+
+                    OrderDto orderDto = orderDtoRepository.SelectOrder(connection, orderid);
+                    orderDto.orderItems = orderDtoRepository.SelectOrderItems(connection, orderid);
+
+
+                    return orderDto;
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                    return new OrderDto();
+                }
+
+            }
         }
 
     }

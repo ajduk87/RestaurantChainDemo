@@ -5,13 +5,13 @@ namespace RestaurantChainApp.Services
 {
     public interface IRestaurantChainService
     {
-        List<Dish> GetMenu();
-        List<Dish> GetSingleDishes();
-        List<Meal> GetMeals();
+        void UpdateMenu();
+        //List<Dish> GetSingleDishes();
+        //List<Meal> GetMeals();
         
-        OrderDto GetOrder(int orderid);
+        //OrderDto GetOrder(int orderid);
         void CreateOrder(OrderDto orderDto);
         void ModifyOrder(OrderDto orderDto);
-        HappyHour HappyHour();
+        //HappyHour HappyHour();
     }
 }

@@ -56,7 +56,7 @@ namespace RestaurantChainApp.Services
             return mapperConfiguration.CreateMapper();
         }
 
-        public List<Dish> GetMenu() 
+        public void UpdateMenu() 
         {
             using (NpgsqlConnection connection = databaseConnectionFactory.Create())
             {
@@ -92,12 +92,10 @@ namespace RestaurantChainApp.Services
                             }
                             transaction.Commit();
 
-                            return dishes;
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            return new List<Dish>();
                         }
                     }
               

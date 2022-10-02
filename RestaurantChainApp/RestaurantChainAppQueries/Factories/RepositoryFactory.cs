@@ -8,5 +8,10 @@ namespace RestaurantChainAppQueries.Factories
         {
             return new DishesRepository();
         }
+
+        public OrderDtoRepository CreateOrderDtoRepository() 
+        {
+            return new OrderDtoRepository();
+        }
     }
 }

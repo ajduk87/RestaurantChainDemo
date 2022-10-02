@@ -78,11 +78,20 @@ namespace RestaurantChainApp.Controllers
         //    return this.restaurantChainService.HappyHour();
         //}
 
-        [Route("GetOrder")]
-        [HttpGet]
-        public OrderDto GetOrder(int orderid)
+        //[Route("GetOrder")]
+        //[HttpGet]
+        //public OrderDto GetOrder(int orderid)
+        //{
+        //    return this.restaurantChainService.GetOrder(orderid);
+        //}
+
+        [Route("UpdateMenu")]
+        [HttpPut]
+        public HttpResponseMessage GetMenuItems()
         {
-            return this.restaurantChainService.GetOrder(orderid);
+            this.restaurantChainService.UpdateMenu();
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Route("CreateOrder")]
